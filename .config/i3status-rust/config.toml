@@ -1,0 +1,44 @@
+[theme]
+theme = "native"
+
+[icons]
+icons = "material-nf"
+
+[[block]]
+block = "music"
+format = " $icon {$combo.str(0,20) $play |}"
+
+[[block]]
+block = "sound"
+
+[[block]]
+block = "custom"
+command = '''sh ~/.config/sway/helpers/updates.sh | awk '{ printf(" %d", $1) }' '''
+[[block.click]]
+button = "left"
+cmd = "alacritty --class 'Update Manager' -e sh ~/.config/sway/helpers/run_updates.sh"
+
+[[block]]
+block = "memory"
+format = "$icon $mem_used_percents.eng(2) "
+
+[[block]]
+block = "cpu"
+interval = 1
+format = " $icon  $barchart.str() $utilization.eng() "
+format_alt = "$icon $frequency.eng(){ $boost.str()|} "
+
+[[block]]
+block = "backlight"
+device = "intel_backlight"
+invert_icons = true
+
+[[block]]
+block = "battery"
+format = " $icon $percentage "
+
+[[block]]
+block = "time"
+format = " %a %b %d, %Y %R "
+timezone = "US/Pacific"
+
