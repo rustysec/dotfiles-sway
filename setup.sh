@@ -10,7 +10,7 @@ sudo systemctl enable greetd
 # link our config directories
 for item in $(ls .config/)
 do
-    ln -s $pwd/.config/$item ~/.config/$item
+    ln -s $(pwd)/.config/$item ~/.config/$item
 done
 
 # setup tmux
