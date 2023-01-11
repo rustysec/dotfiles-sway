@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # setup our greeter
 sudo mkdir -p /etc/greetd
@@ -17,10 +17,18 @@ done
 ln -s $pwd/.tmux.conf ~/.tmux.conf
 
 # try and find a valid background
-if [ -e '/usr/share/wallpapers/openSUSEdefault/contents/images/3840x2400.jpg' ];
-then
-    echo 'output * bg /usr/share/wallpapers/openSUSEdefault/contents/images/3840x2400.jpg fill' > ~/.config/sway/config.d/200-background.conf
-elif [ -e '/usr/share/desktop-base/emerald-theme/wallpaper/contents/images/1920x1080.svg' ];
-then
-    echo 'output * bg /usr/share/desktop-base/emerald-theme/wallpaper/contents/images/1920x1080.svg fill' > ~/.config/sway/config.d/200-background.conf
-fi
+BACKGROUNDS=(
+'/usr/share/wallpapers/openSUSEdefault/contents/images/3840x2400.jpg'
+'/usr/share/desktop-base/emerald-theme/wallpaper/contents/images/1920x1080.svg'
+)
+
+for background in ${BACKGROUNDS[@]}
+do
+    echo "Checking for $background"
+    if [ -e $background ]
+    then
+        echo "Setting background to $background"
+        echo "output * bg $background fill" | tee ~/.config/sway/config.d/200-background.conf
+        echo "output * bg $background fill" | sudo tee -a /etc/greetd/sway-config
+    fi
+done
