@@ -1,10 +1,25 @@
 #!/bin/bash
 
+GREETD_USERS=(
+    "greeter"
+    "_greetd"
+)
+
+for greetd_user in ${GREETD_USERS[@]}
+do
+    if [ ! -z "$(grep $greetd_user /etc/passwd)" ];
+    then
+        GREETD_USER=$greetd_user
+        break
+    fi
+done
+
 # setup our greeter
 sudo mkdir -p /etc/greetd
+sudo cp etc/pam.d/* /etc/pam.d
 sudo cp etc/greetd/* /etc/greetd
-sudo chown greeter /etc/greetd/*
-sudo chgrp greeter /etc/greetd/*
+sudo chown $GREETD_USER /etc/greetd/*
+sudo chgrp $GREETD_USER /etc/greetd/*
 sudo systemctl enable greetd
 
 # link our config directories
