@@ -29,7 +29,7 @@ do
 done
 
 # setup tmux
-ln -s $pwd/.tmux.conf ~/.tmux.conf
+ln -s $(pwd)/.tmux.conf ~/.tmux.conf
 
 # try and find a valid background
 BACKGROUNDS=(
