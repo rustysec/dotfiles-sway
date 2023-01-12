@@ -1,6 +1,6 @@
 #!/bin/bash
 
-OPT=$(cat ~/code/dotfiles-suse/.config/sway/locker/options | wofi --insensitive --dmenu --style=~/.config/wofi/style.css)
+OPT=$(cat ~/.config/sway/locker/options | wofi --insensitive --dmenu)
 
 case $OPT in
     "Shutdown")

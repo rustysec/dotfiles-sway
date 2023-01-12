@@ -16,7 +16,7 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term alacritty
+set $term foot
 
 ### Output configuration
 #
@@ -24,14 +24,15 @@ set $term alacritty
 output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 
 # wofi as application launcher
-set $menu wofi --conf=~/.config/wofi/config --style=~/.config/wofi/style.css
+# set $menu wofi --conf=~/.config/wofi/config --style=~/.config/wofi/style.css
+set $menu wofi
 
 ### Key bindings
 #
 # Basics:
 #
     # Start a terminal
-    bindsym $mod+Return exec $term -e tmux new
+    bindsym $mod+Return exec $term tmux new
 
     # Kill focused window
     bindsym $mod+Shift+q kill
@@ -51,7 +52,7 @@ set $menu wofi --conf=~/.config/wofi/config --style=~/.config/wofi/style.css
 
     # Exit sway (logs you out of your Wayland session)
     # bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
-    bindsym $mod+Shift+e exec sh ~/.config/sway/locker/menu.sh
+    bindsym $mod+Shift+e exec bash ~/.config/sway/locker/menu.sh
 #
 # Moving around:
 #
@@ -170,8 +171,8 @@ bindsym $mod+r mode "resize"
 
 # Idle configuration
 exec swayidle -w \
-         timeout 300 'sh ~/.config/sway/locker/locker.sh' \
+         timeout 300 'bash ~/.config/sway/locker/locker.sh' \
          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-         before-sleep 'sh ~/.config/sway/locker/locker.sh'
+         before-sleep 'bash ~/.config/sway/locker/locker.sh'
 
 include ~/.config/sway/config.d/*

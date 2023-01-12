@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 function update() {
     if [ ! -z $(command -v zypper) ];

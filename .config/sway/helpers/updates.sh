@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 function check() {
     if [ ! -z $(command -v zypper) ];

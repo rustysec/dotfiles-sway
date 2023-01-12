@@ -13,10 +13,10 @@ block = "sound"
 
 [[block]]
 block = "custom"
-command = '''sh ~/.config/sway/helpers/updates.sh | awk '{ printf(" %d", $1) }' '''
+command = '''bash ~/.config/sway/helpers/updates.sh | awk '{ printf(" %d", $1) }' '''
 [[block.click]]
 button = "left"
-cmd = "alacritty --class 'Update Manager' -e sh ~/.config/sway/helpers/run_updates.sh"
+cmd = "alacritty --class 'Update Manager' -e bash ~/.config/sway/helpers/run_updates.sh"
 
 [[block]]
 block = "memory"
@@ -30,7 +30,7 @@ format_alt = "$icon $frequency.eng(){ $boost.str()|} "
 
 [[block]]
 block = "backlight"
-device = "intel_backlight"
+#device = "intel_backlight"
 invert_icons = true
 
 [[block]]
