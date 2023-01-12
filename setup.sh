@@ -47,3 +47,8 @@ do
         echo "output * bg $background fill" | sudo tee -a /etc/greetd/sway-config
     fi
 done
+
+# configure some .profile items
+echo 'export XDG_CURRENT_DESKTOP=sway' | tee -a ~/.profile
+echo 'eval "$(ssh-agent -s)"' | tee -a ~/.profile
+
