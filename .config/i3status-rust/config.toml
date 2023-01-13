@@ -19,7 +19,7 @@ cmd = "alacritty --class 'VPN Connect' -e bash ~/.config/sway/helpers/vpn_connec
 [[block]]
 block = "net"
 format = " $icon $device "
-device = "wlp3s0"
+device = "^w.*"
 
 [[block]]
 block = "sound"
