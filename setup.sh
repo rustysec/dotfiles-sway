@@ -23,7 +23,17 @@ sudo chgrp $GREETD_USER /etc/greetd/*
 sudo systemctl enable greetd
 
 # allow package refreshing from users
-sudo cp etc/sudoers.d/* /etc/sudoers.d/
+PACKAGE_MANAGERS=(
+    "zypper"
+    "pacman"
+    "apt"
+)
+for manager in ${PACKAGE_MANAGERS[@]};
+do
+    if [ ! -z $(command -v $manager) ]; then
+        sudo cp etc/sudoers.d/$manager-refresh /etc/sudoers.d/
+    fi
+done
 
 # link our config directories
 for item in $(ls .config/)
