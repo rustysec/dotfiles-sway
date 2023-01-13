@@ -16,3 +16,5 @@ function update() {
 }
 
 update
+echo "Updates done, press enter to close"
+read input
