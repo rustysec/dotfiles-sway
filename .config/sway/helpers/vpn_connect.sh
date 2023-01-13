@@ -7,6 +7,9 @@ then
 
     if [ ! -z $gateway ];
     then
-        sudo openconnect --proto gp $gateway
+        sudo openconnect -b --proto gp $gateway
+        swaymsg '[app_id="VPN Connect"] move scratchpad'
+        echo "Press enter to disconnect..."
+        read input
     fi
 fi
