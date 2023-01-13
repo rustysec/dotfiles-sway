@@ -22,6 +22,9 @@ sudo chown $GREETD_USER /etc/greetd/*
 sudo chgrp $GREETD_USER /etc/greetd/*
 sudo systemctl enable greetd
 
+# allow package refreshing from users
+sudo cp etc/sudoers.d/* /etc/sudoers.d/
+
 # link our config directories
 for item in $(ls .config/)
 do

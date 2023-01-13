@@ -9,6 +9,19 @@ block = "music"
 format = " $icon {$combo.str(0,20) $play |}"
 
 [[block]]
+block = "net"
+format = " $icon $device "
+device = "tun0"
+[[block.click]]
+button = "left"
+cmd = "alacritty --class 'VPN Connect' -e bash ~/.config/sway/helpers/vpn_connect.sh"
+
+[[block]]
+block = "net"
+format = " $icon $device "
+device = "wlp3s0"
+
+[[block]]
 block = "sound"
 
 [[block]]
@@ -30,7 +43,6 @@ format_alt = "$icon $frequency.eng(){ $boost.str()|} "
 
 [[block]]
 block = "backlight"
-#device = "intel_backlight"
 invert_icons = true
 
 [[block]]
