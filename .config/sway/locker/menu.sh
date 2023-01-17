@@ -13,7 +13,7 @@ case $OPT in
         swaymsg exit || hyprctl dispatch exit 0
         ;;
     "Lock")
-        /usr/bin/bash ~/code/dotfiles-suse/.config/sway/locker/locker.sh
+        /usr/bin/bash ~/.config/sway/locker/locker.sh
         ;;
     *)
         echo "Doing Nothing!"
