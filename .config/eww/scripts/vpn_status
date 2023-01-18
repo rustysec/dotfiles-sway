@@ -1,0 +1,8 @@
+#!/usr/bin/bash
+
+if [[ ! -z `ip addr | grep tun0 | grep -v DOWN` ]];
+then
+    echo " VPN"
+else
+    echo " VPN"
+fi

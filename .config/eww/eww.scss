@@ -1,0 +1,95 @@
+$black: #232627;
+$red: #ed1515;
+$green: #11d116;
+$yellow: #f67400;
+$blue: #1d99f3;
+$magenta: #9b59b6;
+$cyan: #1abc9c;
+$white: #fcfcfc;
+
+* {
+    all: unset; //Unsets everything so you can style everything from scratch
+    font-family: "Hack Nerd Font";
+}
+
+//Global Styles
+.bar {
+    background-color: rgba(23, 52, 79, 0.5);
+    color: $cyan;
+    padding: 10px;
+}
+
+// Styles on classes (see eww.yuck for more information)
+
+.sidestuff slider {
+    all: unset;
+    color: $cyan;
+}
+
+.updates {
+    margin-left: 0px;
+    margin-right: 20px;
+}
+
+.metric scale trough highlight {
+    all: unset;
+    background-color: $red;
+    color: $black;
+    border-radius: 10px;
+}
+
+.metric scale trough {
+    all: unset;
+    background-color: $red;
+    border-radius: 50px;
+    min-height: 3px;
+    min-width: 50px;
+    margin-left: 10px;
+    margin-right: 20px;
+}
+
+.metric scale trough highlight {
+    all: unset;
+    background-color: $yellow;
+    color: $black;
+    border-radius: 10px;
+}
+
+.metric scale trough {
+    all: unset;
+    background-color: $cyan;
+    border-radius: 50px;
+    min-height: 3px;
+    min-width: 50px;
+    margin-left: 10px;
+    margin-right: 20px;
+}
+
+.label-ram {
+    font-size: large;
+}
+
+// workspaces
+.workspaces {
+    color: $white;
+    padding: 0 10 0 10;
+}
+
+.workspaces label {
+    padding: 0 5 0 5;
+}
+
+.workspaces button {
+    color: $green;
+    padding: 0 5 0 5;
+}
+
+.workspaces button:hover {
+    color: $red;
+}
+
+.active {
+    color: $black;
+    background-color: $cyan;
+}
+
