@@ -13,5 +13,5 @@ then
         read input
     fi
 else
-    hyperctl dispatch workspace special
+    hyprctl dispatch workspace special
 fi
