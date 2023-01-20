@@ -1,4 +1,4 @@
-(defwidget bar0 []
+(defwidget bar [monitor]
   (centerbox :orientation "h"
     (workspaces)
     (music)
@@ -14,37 +14,47 @@
             :onclick "hyprctl dispatch exec \"foot --title 'System - Update Manager' bash ~/.config/sway/helpers/run_updates.sh\""
             " ${updates}"
     )
-    (metric :label ""
-            :value battery
-            :onchange ""
+    (box :tooltip "${batt_name} ${battery}%"
+        (metric :label ""
+                :onchange ""
+                :value battery
+        )
     )
-    (metric :label ""
-            :value volume
+    (box :tooltip "${volume}%"
+        (metric :label ""
             :onchange "amixer -D pulse sset Master {}%"
+            :value volume
+        )
     )
-    (metric :label ""
-            :value {EWW_RAM.used_mem_perc}
-            :onchange ""
+    (box :tooltip "${round(EWW_RAM.used_mem_perc, 0)}%"
+        (metric :label ""
+                :onchange ""
+                :value {EWW_RAM.used_mem_perc}
+        )
     )
-    (metric :label ""
-            :value {EWW_CPU.avg}
-            :onchange ""
+    (box :tooltip "${round(EWW_CPU.avg, 0)}%"
+        (metric :label ""
+                :onchange ""
+                :value {EWW_CPU.avg}
+        )
     )
-    (metric :label ""
-            :value brightness
-            :onchange ""
+    (box :tooltip "${brightness}%"
+        (metric :label ""
+                :onchange ""
+                :value brightness
+        )
     )
     time))
 
-(deflisten works :initial "(box (label :text \"1\" :class \"active\"))"
+(deflisten works 
+    :initial ""
 	`python3 scripts/workspaces.py`)
 
 (defwidget workspaces []
     (box    :class "workspaces"
             :orientation "h"
-            :space-evenly true
             :halign "start"
-            :spacing 10
+            :spacing 2
 			(literal :content "${works}")))
 
 (defwidget music []
@@ -78,7 +88,10 @@
   "scripts/brightness")
 
 (defpoll battery :interval "10s"
-  "cat /sys/class/power_supply/BAT0/capacity")
+  "cat /sys/class/power_supply/*/capacity | head -n1")
+
+(defpoll batt_name :interval "10s"
+  "cat /sys/class/power_supply/*/model_name | head -n1")
 
 (defpoll updates :interval "10s"
   "~/.config/sway/helpers/updates.sh")
@@ -87,7 +100,7 @@
   "scripts/vpn_status")
 
 (defpoll time :interval "10s"
-  "date '+%b %d, %Y // %H:%M'")
+  "date '+%a // %b %d, %Y // %H:%M'")
 
 (defwindow bar0
   :monitor 0
@@ -99,5 +112,5 @@
                       :anchor "top center")
   :reserve (struts :side "top" :distance "4%")
   :exclusive true
-  (bar0))
+  (bar :monitor 0))
 

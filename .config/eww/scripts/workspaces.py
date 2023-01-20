@@ -24,9 +24,9 @@ def update_workspace(active_workspace):
 
         if id > 0:
             if id == active_workspace:
-                prompt += f"(label :text \"{id}\" :class \"active\")"
+                prompt += f"(button :class \"ws\" :onclick \"hyprctl dispatch workspace {id}\" (label :class \"ws ws-active\" :text \"{id}\"))"
             elif count > 0:
-                prompt += f"(label :text \"{id}\")"
+                prompt += f"(button :class \"ws\" :onclick \"hyprctl dispatch workspace {id}\" (label :class \"ws\" :text \"{id}\"))"
 
     prompt += ")"
 
@@ -53,17 +53,16 @@ def start():
                 except Exception:
                     update_workspace(0)
 
-if len(sys.argv) == 1:
-    start()
-else:
-    output = subprocess.run(f"hyprctl -j monitors", 
-                    shell=True,
-                    capture_output=True)
+output = subprocess.run(f"hyprctl -j monitors", 
+                shell=True,
+                capture_output=True)
 
-    workspaces = sorted(
-            json.loads(output.stdout.decode("utf-8")),
-            key=lambda d: d['id']
-            )
+workspaces = sorted(
+        json.loads(output.stdout.decode("utf-8")),
+        key=lambda d: d['id']
+        )
 
-    active = workspaces[0]["activeWorkspace"]["id"]
-    update_workspace(active)
+active = workspaces[0]["activeWorkspace"]["id"]
+update_workspace(active)
+
+start()
