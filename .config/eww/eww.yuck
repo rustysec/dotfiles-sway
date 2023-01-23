@@ -47,6 +47,11 @@
     :interval "10s"
     "scripts/vpn_status")
 
+(defpoll batteries 
+    :initial ""
+    :interval "10s"
+    "python3 scripts/batteries.py")
+
 (defwidget placeholder []
     (box :orientation "v")
 )
@@ -78,6 +83,11 @@
         (label :class "small" :text "${side-time}")
     )
 )
+
+(defwidget batteries []
+        (box
+            :orientation "v"
+			(literal :content "${batteries}")))
 
 (defwidget circle-indicator [value text cmd ?class]
     (box
@@ -171,6 +181,7 @@
         :halign "fill"
         :spacing 5
 (updates)
+(batteries)
 (vpn)
 (ram)
 (cpu)

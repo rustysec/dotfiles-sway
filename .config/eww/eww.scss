@@ -12,101 +12,18 @@ $grey: #232627;
 $bg: rgba(23, 52, 79, 0.5);
 
 * {
-    all: unset; //Unsets everything so you can style everything from scratch
-    // font-family: "Hack Nerd Font";
-    // font-family: "Font Awesome 6 Free";
-}
-
-//Global Styles
-.bar {
-    font-family: "Hack Nerd Font";
-    background-color: rgba(23, 52, 79, 0.5);
-    color: $cyan;
-    padding: 10px;
-}
-
-// Styles on classes (see eww.yuck for more information)
-.sidestuff slider {
     all: unset;
-    color: $cyan;
 }
 
-.updates {
-    margin-left: 0px;
-    margin-right: 20px;
-}
-
-.metric scale trough highlight {
-    all: unset;
-    background-color: $red;
-    color: $black;
-    border-radius: 10px;
-}
-
-.metric scale trough {
-    all: unset;
-    background-color: $red;
-    border-radius: 50px;
-    min-height: 3px;
-    min-width: 50px;
-    margin-left: 10px;
-    margin-right: 20px;
-}
-
-.metric scale trough highlight {
-    all: unset;
-    background-color: $yellow;
-    color: $black;
-    border-radius: 10px;
-}
-
-.metric scale trough {
-    all: unset;
-    background-color: $cyan;
-    border-radius: 50px;
-    min-height: 3px;
-    min-width: 50px;
-    margin-left: 10px;
-    margin-right: 20px;
-}
-
-.label-ram {
-    font-size: large;
-}
-
-// workspaces
-.workspaces {
-    font-family: "Hack Nerd Font";
-    color: $white;
-    padding: 5;
-}
-
-.ws {
-    color: $white;
-}
-
-.ws-active {
-    background-color: $cyan;
-    color: $black;
-}
-
-.ws-inactive {
-    background-color: $grey;
-    color: $green;
-}
-
-.workspaces label {
-    padding: 0 5 0 5;
-    border-radius: 5%;
-}
-
-// Sidebar
+/////////////
+// Sidebar //
+/////////////
 .sidebar {
     font-family: "Font Awesome 6 Free";
     background-color: rgba(23, 52, 79, 1);
     border-radius: 8px;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
 
     .bottom {
     }
@@ -163,4 +80,29 @@ $bg: rgba(23, 52, 79, 0.5);
     .small {
         font-size: 14px;
     }
+}
+
+.workspaces {
+    font-family: "Hack Nerd Font";
+    color: $white;
+    padding: 5;
+}
+
+.ws {
+    color: $white;
+}
+
+.ws-active {
+    background-color: $cyan;
+    color: $black;
+}
+
+.ws-inactive {
+    background-color: $grey;
+    color: $green;
+}
+
+.workspaces label {
+    padding: 0 5 0 5;
+    border-radius: 4px;
 }
