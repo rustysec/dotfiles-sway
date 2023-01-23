@@ -6,21 +6,26 @@ $blue: #1d99f3;
 $magenta: #9b59b6;
 $cyan: #1abc9c;
 $white: #fcfcfc;
+$grey: #232627;
+
+
+$bg: rgba(23, 52, 79, 0.5);
 
 * {
     all: unset; //Unsets everything so you can style everything from scratch
-    font-family: "Hack Nerd Font";
+    // font-family: "Hack Nerd Font";
+    // font-family: "Font Awesome 6 Free";
 }
 
 //Global Styles
 .bar {
+    font-family: "Hack Nerd Font";
     background-color: rgba(23, 52, 79, 0.5);
     color: $cyan;
     padding: 10px;
 }
 
 // Styles on classes (see eww.yuck for more information)
-
 .sidestuff slider {
     all: unset;
     color: $cyan;
@@ -71,33 +76,91 @@ $white: #fcfcfc;
 
 // workspaces
 .workspaces {
+    font-family: "Hack Nerd Font";
     color: $white;
-    padding: 0 0 0 0;
-}
-
-.workspaces button:hover {
-    color: $red;
-}
-
-.active {
-    color: $black;
-    background-color: $cyan;
+    padding: 5;
 }
 
 .ws {
     color: $white;
 }
 
-.ws button:hover {
-    color: $red;
-    background-color: $blue;
-}
-
-.ws label {
-    padding: 0 5 0 5;
-}
-
 .ws-active {
     background-color: $cyan;
     color: $black;
+}
+
+.ws-inactive {
+    background-color: $grey;
+    color: $green;
+}
+
+.workspaces label {
+    padding: 0 5 0 5;
+    border-radius: 5%;
+}
+
+// Sidebar
+.sidebar {
+    font-family: "Font Awesome 6 Free";
+    background-color: rgba(23, 52, 79, 1);
+    border-radius: 8px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+
+    .bottom {
+    }
+
+    .top {
+        font-size: 20px;
+
+    }
+}
+
+.separator {
+    font-family: "Hack Nerd Font";
+    color: $white;
+}
+
+.indicator {
+    color: $magenta;
+
+    circular-progress {
+        color: $magenta;
+        background-color: $cyan;
+    }
+
+    .icon {
+        padding: 8px;
+        font-size: 18px;
+        color: $cyan;
+    }
+}
+
+.urgent {
+    color: $yellow;
+
+    button {
+        color: $yellow;
+    }
+
+    .icon {
+        color: $yellow;
+    }
+
+    circular-progress {
+        background-color: $yellow;
+        color: $yellow;
+    }
+}
+
+.clock {
+    label {
+        font-size: 18px;
+        font-family: "Hack Nerd Font";
+    }
+
+    .small {
+        font-size: 14px;
+    }
 }

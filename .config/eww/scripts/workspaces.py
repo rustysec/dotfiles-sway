@@ -16,7 +16,7 @@ def update_workspace(active_workspace):
             key=lambda d: d['id']
             )
 
-    prompt  = f"(box"
+    prompt  = f"(box :spacing 5 :orientation \"v\" "
 
     for ws in workspaces:
         id = ws["id"]
@@ -26,7 +26,7 @@ def update_workspace(active_workspace):
             if id == active_workspace:
                 prompt += f"(button :class \"ws\" :onclick \"hyprctl dispatch workspace {id}\" (label :class \"ws ws-active\" :text \"{id}\"))"
             elif count > 0:
-                prompt += f"(button :class \"ws\" :onclick \"hyprctl dispatch workspace {id}\" (label :class \"ws\" :text \"{id}\"))"
+                prompt += f"(button :class \"ws\" :onclick \"hyprctl dispatch workspace {id}\" (label :class \"ws ws-inactive\" :text \"{id}\"))"
 
     prompt += ")"
 

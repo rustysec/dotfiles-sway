@@ -1,116 +1,205 @@
-(defwidget bar [monitor]
-  (centerbox :orientation "h"
-    (workspaces)
-    (music)
-    (sidestuff)))
-
-(defwidget sidestuff []
-  (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end"
-    (button :class "updates"
-            :onclick "hyprctl dispatch exec \"foot --title 'VPN Connect' bash ~/.config/sway/helpers/vpn_connect.sh\""
-            "${vpn_status}"
-    )
-    (button :class "updates"
-            :onclick "hyprctl dispatch exec \"foot --title 'System - Update Manager' bash ~/.config/sway/helpers/run_updates.sh\""
-            " ${updates}"
-    )
-    (box :tooltip "${batt_name} ${battery}%"
-        (metric :label ""
-                :onchange ""
-                :value battery
-        )
-    )
-    (box :tooltip "${volume}%"
-        (metric :label ""
-            :onchange "amixer -D pulse sset Master {}%"
-            :value volume
-        )
-    )
-    (box :tooltip "${round(EWW_RAM.used_mem_perc, 0)}%"
-        (metric :label ""
-                :onchange ""
-                :value {EWW_RAM.used_mem_perc}
-        )
-    )
-    (box :tooltip "${round(EWW_CPU.avg, 0)}%"
-        (metric :label ""
-                :onchange ""
-                :value {EWW_CPU.avg}
-        )
-    )
-    (box :tooltip "${brightness}%"
-        (metric :label ""
-                :onchange ""
-                :value brightness
-        )
-    )
-    time))
-
-(deflisten works 
-    :initial ""
-	`python3 scripts/workspaces.py`)
-
-(defwidget workspaces []
-    (box    :class "workspaces"
-            :orientation "h"
-            :halign "start"
-            :spacing 2
-			(literal :content "${works}")))
-
-(defwidget music []
-  (box :class "music"
-       :orientation "h"
-       :space-evenly false
-       :halign "center"
-    {music != "" ? "🎵${music}" : ""}))
-
-
-(defwidget metric [label value onchange]
-  (box :orientation "h"
-       :class "metric"
-       :space-evenly false
-    (box :class "label" label)
-    (scale :min 0
-           :max 101
-           :active {onchange != ""}
-           :value value
-           :onchange onchange)))
-
-
-
-(deflisten music :initial ""
-  "playerctl --follow metadata --format '{{ artist }} - {{ title }}' || true")
-
-(defpoll volume :interval "1s"
-  "pamixer --get-volume")
-
-(defpoll brightness :interval "1s"
-  "scripts/brightness")
-
 (defpoll battery :interval "10s"
   "cat /sys/class/power_supply/*/capacity | head -n1")
 
 (defpoll batt_name :interval "10s"
   "cat /sys/class/power_supply/*/model_name | head -n1")
 
-(defpoll updates :interval "10s"
-  "~/.config/sway/helpers/updates.sh")
+;;;;;;;;;;;;;
+;; sidebar ;;
+;;;;;;;;;;;;;
 
-(defpoll vpn_status :interval "10s"
-  "scripts/vpn_status")
+(deflisten works 
+    :initial ""
+	`python3 scripts/workspaces.py`)
 
-(defpoll time :interval "10s"
-  "date '+%a // %b %d, %Y // %H:%M'")
+(defpoll updates
+    :initial ""
+    :interval "600s"
+    "~/.config/sway/helpers/updates.sh")
 
-(defwindow bar0
-  :monitor 0
-  :windowtype "dock"
-  :geometry (geometry :x "0%"
-                      :y "0%"
-                      :width "100%"
-                      :height "10px"
-                      :anchor "top center")
-  :reserve (struts :side "top" :distance "4%")
-  :exclusive true
-  (bar :monitor 0))
+(defpoll volume
+    :initial "0"
+    :interval "5s"
+    "pamixer --get-volume")
+
+(defpoll brightness
+    :initial "0"
+    :interval "5s"
+    "scripts/brightness")
+
+(defpoll side-time
+    :initial "0"
+    :interval "10s"
+    "date '+%H:%M'")
+
+(defpoll side-date
+    :initial "0"
+    :interval "10s"
+    "date '+%b %d'")
+
+(defpoll weekday
+  :initial ""
+  :interval "60s"
+  "date '+%a'")
+
+(defpoll vpn_status
+    :initial ""
+    :interval "10s"
+    "scripts/vpn_status")
+
+(defwidget placeholder []
+    (box :orientation "v")
+)
+
+(defwidget separator [] 
+    (box :orientation "h"
+        (label :class "separator" :text "———")
+    )
+)
+
+(defwidget side-workspaces []
+    (box
+        :orientation "h"
+        ;; :halign "fill"
+        ;; :hexpand "true"
+
+        (box
+            :class "workspaces"
+            :orientation "v"
+            ;; :halign "fill"
+            ;; :hexpand "true"
+            :spacing 5
+			(literal :content "${works}"))))
+
+(defwidget clock []
+    (box :orientation "v" :class "clock"
+        (label :text "${weekday}")
+        (label :class "small" :text "${side-date}")
+        (label :class "small" :text "${side-time}")
+    )
+)
+
+(defwidget circle-indicator [value text cmd ?class]
+    (box
+        :orientation "h"
+        :class "indicator ${class ?: ''}"
+        :valign "center"
+        :halign "center"
+        :visible {text != ""}
+        (circular-progress
+            :class "${class ?: ''}"
+            :value {value == '' ? 0 : value}
+            :start-at 25
+            :thickness 2
+            (button
+                :onclick cmd
+                :class "${class ?: ''}"
+                (label
+                    :class "icon ${class ?: ''}"
+                    :text text
+                )
+            )
+        )
+    )
+)
+
+(defwidget updates [] (circle-indicator
+    :value {(updates == 0 || updates == "") ? "" : updates }
+    :text {(updates == 0 || updates == "") ? "" : "" }
+    :cmd "hyprctl dispatch exec `foot --title 'System - Update Manager' bash ~/.config/sway/helpers/run_updates.sh`"
+    :class "urgent"
+    )
+)
+
+(defwidget cpu [] (circle-indicator
+    :value {EWW_CPU.avg}
+    :text ""
+    :cmd ""
+    )
+)
+
+(defwidget vpn [] (circle-indicator
+    :value 0 
+    :text "${vpn_status == "" ? '' : ''}"
+    :cmd "hyprctl dispatch exec `foot --title 'VPN Connect' -e bash ~/.config/sway/helpers/vpn_connect.sh`"
+    )
+)
+
+(defwidget ram [] (circle-indicator
+    :value {EWW_RAM.used_mem_perc}
+    :text ""
+    :cmd ""
+    )
+)
+
+(defwidget volume [] (circle-indicator
+    :value volume 
+    :text ""
+    :cmd "hyprctl dispatch exec pavucontrol"
+    )
+)
+
+(defwidget brightness[] (circle-indicator
+    :value brightness
+    :text ""
+    :cmd ""
+    )
+)
+
+(defwidget sidebar-top []
+    (box
+        :class "top"
+        :orientation "v"
+        :space-evenly "false" 
+        :valign "start"
+        :halign "fill"
+        :hexpand "true"
+(side-workspaces)))
+
+;; CENTER WIDGETS
+(defwidget sidebar-center []
+    (box :orientation "v" :space-evenly "false" :valign "center" :halign "center"
+(placeholder)))
+
+;; BOTTOM WIDGETS
+(defwidget sidebar-bottom []
+    (box 
+        :orientation "v" 
+        :space-evenly "false"
+        :class "bottom"
+        :valign "end"
+        :halign "fill"
+        :spacing 5
+(updates)
+(vpn)
+(ram)
+(cpu)
+(volume)
+(brightness)
+(separator)
+(clock)
+))
+
+(defwidget sidebar []
+    (box
+        :class "sidebar"
+        :orientation "v"
+        :halign "fill"
+(sidebar-top)
+(sidebar-center)
+(sidebar-bottom)))
+
+(defwindow sidebar
+    :geometry (geometry
+                :x "10px"
+                :y "0.5%" 
+                :height "98%" 
+                :width "3%"
+                :anchor "left center"
+                )
+    :monitor 0
+    :wmignore "true"
+    :windowtype "dock"
+    :exclusive true
+(sidebar))
 
