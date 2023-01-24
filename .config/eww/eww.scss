@@ -16,6 +16,38 @@ $bg: rgba(23, 52, 79, 0.5);
 }
 
 /////////////
+//  Music  //
+/////////////
+.music {
+    font-family: "Hack Nerd Font";
+    background-color: rgba(23, 52, 79, 1);
+    border-radius: 8px;
+    padding: 2rem;
+    font-weight: bold;
+
+    .art-row {
+        padding-bottom: 1rem;
+    }
+
+    .artist {
+        font-size: 24px;
+    }
+
+    .title {
+        font-size: 18px;
+        font-style: italic;
+    }
+
+    .album {
+        font-weight: normal;
+    }
+
+    label {
+        padding-bottom: 1rem;
+    }
+}
+
+/////////////
 // Sidebar //
 /////////////
 .sidebar {
@@ -29,8 +61,7 @@ $bg: rgba(23, 52, 79, 0.5);
     }
 
     .top {
-        font-size: 20px;
-
+        font-size: 18px;
     }
 }
 
@@ -51,6 +82,10 @@ $bg: rgba(23, 52, 79, 0.5);
         padding: 8px;
         font-size: 18px;
         color: $cyan;
+    }
+
+    .workspace {
+        font-family: "Hack Nerd Font";
     }
 }
 
@@ -104,5 +139,5 @@ $bg: rgba(23, 52, 79, 0.5);
 
 .workspaces label {
     padding: 0 5 0 5;
-    border-radius: 4px;
+    border-radius: 8px;
 }

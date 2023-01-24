@@ -24,9 +24,9 @@ def update_workspace(active_workspace):
 
         if id > 0:
             if id == active_workspace:
-                prompt += f"(button :class \"ws\" :onclick \"hyprctl dispatch workspace {id}\" (label :class \"ws ws-active\" :text \"{id}\"))"
+                prompt += f"(circle-indicator :value 100 :class \"workspace\" :cmd \"hyprctl dispatch workspace {id}\" :text \"{id}\")"
             elif count > 0:
-                prompt += f"(button :class \"ws\" :onclick \"hyprctl dispatch workspace {id}\" (label :class \"ws ws-inactive\" :text \"{id}\"))"
+                prompt += f"(circle-indicator :value 0   :class \"workspace\" :cmd \"hyprctl dispatch workspace {id}\" :text \"{id}\")"
 
     prompt += ")"
 
