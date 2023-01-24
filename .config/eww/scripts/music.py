@@ -11,18 +11,22 @@ def start():
         if not line:
             break
 
-        (status, artist, title, album, artUrl) = line.decode().strip().split('|')
+        try:
+            (status, artist, title, album, artUrl) = line.decode().strip().split('|')
 
-        artUrl = artUrl.replace("file://", "")
+            artUrl = artUrl.replace("file://", "")
 
-        prompt = "{"
-        prompt += f"\"status\": \"{status}\","
-        prompt += f"\"artist\": \"{artist}\","
-        prompt += f"\"title\": \"{title}\","
-        prompt += f"\"album\": \"{album}\","
-        prompt += f"\"artUrl\": \"{artUrl}\""
-        prompt += "}"
+            prompt = "{"
+            prompt += f"\"status\": \"{status}\","
+            prompt += f"\"artist\": \"{artist}\","
+            prompt += f"\"title\": \"{title}\","
+            prompt += f"\"album\": \"{album}\","
+            prompt += f"\"artUrl\": \"{artUrl}\""
+            prompt += "}"
 
-        subprocess.run(f"echo '{prompt}'", shell=True)
+            subprocess.run(f"echo '{prompt}'", shell=True)
+        except Exception:
+            subprocess.run("echo \{\}", shell=True)
+
 
 start()
