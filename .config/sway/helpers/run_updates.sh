@@ -16,5 +16,6 @@ function update() {
 }
 
 update
+eww update updates='' 2>/dev/null
 echo "Updates done, press enter to close"
 read input
