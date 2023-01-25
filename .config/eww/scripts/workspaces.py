@@ -30,7 +30,7 @@ def update_workspace(active_workspace):
 
     prompt += ")"
 
-    subprocess.run(f"echo '{prompt}'", shell=True)
+    print(prompt, flush=True)
 
 
 def start():

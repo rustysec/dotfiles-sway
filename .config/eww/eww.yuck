@@ -6,10 +6,11 @@
 (box
   :orientation "v"
   :halign "start"
+  :hexpand "true"
   :class "music"
   :space-evenly "false"
   (box
-
+    :hexpand "true"
     :orientation "h"
     :halign "start"
     :class "art-row"
@@ -25,7 +26,6 @@
               :x "10px"
               :y "42%" 
               :height "10%" 
-              :width "15%"
               )
   :monitor 0
   :wmignore "true"

@@ -8,8 +8,7 @@ $cyan: #1abc9c;
 $white: #fcfcfc;
 $grey: #232627;
 
-
-$bg: rgba(23, 52, 79, 0.5);
+$bg: rgba(23, 52, 79, 0.4);
 
 * {
     all: unset;
@@ -20,7 +19,7 @@ $bg: rgba(23, 52, 79, 0.5);
 /////////////
 .music {
     font-family: "Hack Nerd Font";
-    background-color: rgba(23, 52, 79, 1);
+    background-color: $bg;
     border-radius: 8px;
     padding: 2rem;
     font-weight: bold;
@@ -31,6 +30,7 @@ $bg: rgba(23, 52, 79, 0.5);
 
     .artist {
         font-size: 24px;
+        padding-left: 1rem;
     }
 
     .title {
@@ -52,7 +52,7 @@ $bg: rgba(23, 52, 79, 0.5);
 /////////////
 .sidebar {
     font-family: "Font Awesome 6 Free";
-    background-color: rgba(23, 52, 79, 1);
+    background-color: $bg;
     border-radius: 8px;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;

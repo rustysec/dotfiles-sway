@@ -20,7 +20,6 @@ def update_batteries():
             capacity = read_file(dir.path + '/' + 'capacity')
             prompt += f"(circle-indicator :value {capacity} :text \"\" :tooltips \"{model}\" :cmd \"\")"
 
-    prompt += ""
-    print(prompt)
+    print(prompt, flush=True)
 
 update_batteries()

@@ -2,6 +2,15 @@
 
 import subprocess
 
+def fix(item):
+    item = item.replace("(", "\\(")
+    item = item.replace(")", "\\)")
+    item = item.replace("'", "\\'")
+    item = item.replace("`", "\\`")
+    item = item.replace("\"", "\\\"")
+    return item
+
+
 def start():
     player = subprocess.Popen(["playerctl", "-F", "metadata", "-f", "{{status}}|{{artist}}|{{title}}|{{album}}|{{mpris:artUrl}}"], stdout=subprocess.PIPE)
 
@@ -24,9 +33,11 @@ def start():
             prompt += f"\"artUrl\": \"{artUrl}\""
             prompt += "}"
 
-            subprocess.run(f"echo '{prompt}'", shell=True)
+            print(f"{prompt}", flush=True)
+
+            # subprocess.run("echo '" + prompt + "'", shell=True)
         except Exception:
-            subprocess.run("echo \{\}", shell=True)
+            print("\{\}", flush=True)
 
 
 start()
