@@ -37,7 +37,7 @@ def start():
 
             # subprocess.run("echo '" + prompt + "'", shell=True)
         except Exception:
-            print("\{\}", flush=True)
+            print("{}", flush=True)
 
 
 start()
