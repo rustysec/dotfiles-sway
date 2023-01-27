@@ -189,7 +189,7 @@
 
 (defwidget volume []
 (circle-indicator
-  :value volume 
+  :value volume
   :text ""
   :cmd "hyprctl dispatch exec pavucontrol"
   )
