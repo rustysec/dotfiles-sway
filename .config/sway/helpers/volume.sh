@@ -11,5 +11,5 @@ then
 fi
 
 if [ ! -z $volume ]; then
-    eww update volume=$volume
+    ~/.local/bin/eww update volume=$volume
 fi
