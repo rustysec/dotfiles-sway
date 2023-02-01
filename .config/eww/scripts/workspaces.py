@@ -107,7 +107,7 @@ CURRENT_DESKTOP = USER = os.getenv('XDG_CURRENT_DESKTOP')
 
 if CURRENT_DESKTOP == 'sway':
     init_sway()
-elif CURRENT_DESKTOP == 'hyprland':
+elif CURRENT_DESKTOP == 'Hyprland':
     init_hypr()
 else:
     print(f"Incompatable window manager: {CURRENT_DESKTOP}")
