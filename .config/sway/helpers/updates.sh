@@ -10,8 +10,6 @@ function check() {
     elif [ ! -z $(command -v pacman) ];
     then
         pacman -Qu | wc -l
-    else
-        echo "Unsupported package manager"
     fi
 }
 

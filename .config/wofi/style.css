@@ -1,7 +1,7 @@
 /* https://cloudninja.pw/docs/wofi.html */
 window {
     border: 2px solid black;
-    background-color: rgba(23, 63, 79, 0.8); 
+    background-color: rgba(23, 63, 79, 0.9); 
 }
 
 #input {
@@ -28,5 +28,5 @@ window {
 
 #entry:selected {
     color: rgba(115, 186, 37, 1);
-    background-color: rgba(53, 185, 171, 0.3);
+    background-color: rgba(53, 185, 171, 0.5);
 }
