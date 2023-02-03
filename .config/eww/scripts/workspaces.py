@@ -80,9 +80,9 @@ def update_sway_workspace():
         id = ws.num
 
         if ws.focused:
-            prompt += f"(circle-indicator :value 100 :class \"workspace\" :cmd \"hyprctl dispatch workspace {id}\" :text \"{id}\")"
+            prompt += f"(circle-indicator :value 100 :class \"workspace\" :cmd \"sway workspace {id}\" :text \"{id}\")"
         else:
-            prompt += f"(circle-indicator :value 0   :class \"workspace\" :cmd \"hyprctl dispatch workspace {id}\" :text \"{id}\")"
+            prompt += f"(circle-indicator :value 0   :class \"workspace\" :cmd \"sway workspace {id}\" :text \"{id}\")"
 
     prompt += ")"
 
