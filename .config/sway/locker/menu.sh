@@ -4,10 +4,10 @@ OPT=$(cat ~/.config/sway/locker/options | wofi --insensitive --dmenu)
 
 case $OPT in
     "Shutdown")
-        systemctl poweroff
+        systemctl poweroff || loginctl poweroff
         ;;
     "Restart")
-        systemctl reboot
+        systemctl reboot || loginctl reboot
         ;;
     "Logout")
         swaymsg exit || hyprctl dispatch exit 0

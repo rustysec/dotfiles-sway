@@ -176,7 +176,7 @@
 (defwidget vpn [] (circle-indicator
   :value 0 
   :text "${vpn_status == "" ? '' : ''}"
-  :cmd "hyprctl dispatch exec `foot --title 'VPN Connect' -e bash ~/.config/sway/helpers/vpn_connect.sh`"
+  :cmd "hyprctl dispatch exec `foot --title 'VPN Connect' -o 'locked-title=yes' -e bash ~/.config/sway/helpers/vpn_connect.sh`"
   )
 )
 
