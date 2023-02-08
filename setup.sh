@@ -48,6 +48,7 @@ ln -s $(pwd)/.tmux.conf ~/.tmux.conf
 BACKGROUNDS=(
 '/usr/share/wallpapers/openSUSEdefault/contents/images/3840x2400.jpg'
 '/usr/share/desktop-base/emerald-theme/wallpaper/contents/images/1920x1080.svg'
+'/usr/share/backgrounds/gnome/drool-l.svg'
 )
 
 for background in ${BACKGROUNDS[@]}
@@ -64,4 +65,5 @@ done
 # configure some .profile items
 echo 'export XDG_CURRENT_DESKTOP=sway' | tee -a ~/.profile
 echo 'eval "$(ssh-agent -s)"' | tee -a ~/.profile
+echo 'export PATH=$PATH:~/.local/bin' | tee -a ~/.profile
 

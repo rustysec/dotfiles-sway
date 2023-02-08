@@ -2,5 +2,10 @@
 monitor=eDP-1,preferred,auto,2
 
 # set a background
-# exec        = swaybg -m fill -i /usr/share/desktop-base/emerald-theme/wallpaper/contents/images/1920x1080.svg
-# exec        = swaybg -m fill -i /usr/share/wallpapers/openSUSEdefault/contents/images/3840x2400.jpg
+# exec = swaybg -m fill -i /usr/share/desktop-base/emerald-theme/wallpaper/contents/images/1920x1080.svg
+# exec = swaybg -m fill -i /usr/share/wallpapers/openSUSEdefault/contents/images/3840x2400.jpg
+# exec = swaybg -m fill -i /usr/share/backgrounds/gnome/drool-l.svg
+
+# exec = pipewire
+# exec = pipewire-pulse
+# exec = wireplumber

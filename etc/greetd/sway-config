@@ -1,7 +1,7 @@
 set $mod Mod4
 
-seat * xcursor_theme breeze_cursors 24
-exec gsettings set org.gnome.desktop.interface cursor-theme 'breeze_cursors'
+seat * xcursor_theme Adwaita 24
+exec gsettings set org.gnome.desktop.interface cursor-theme 'Adwaita'
 
 input "1267:12624:ELAN0670:00_04F3:3150_Touchpad" {
     dwt enabled
