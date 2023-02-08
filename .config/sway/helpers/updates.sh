@@ -10,6 +10,9 @@ function check() {
     elif [ ! -z $(command -v pacman) ];
     then
         pacman -Qu | wc -l
+    elif [ ! -z $(command -v xbps-install) ];
+    then
+        xbps-install -un | wc -l
     fi
 }
 

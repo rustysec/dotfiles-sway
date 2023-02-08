@@ -11,6 +11,9 @@ function update() {
     elif [ ! -z $(command -v pacman) ];
     then
         sudo pacman -Syu
+    elif [ ! -z $(command -v xbps-install) ];
+    then
+        sudo xbps-install -u
     else
         echo "Unsupported package manager"
     fi
