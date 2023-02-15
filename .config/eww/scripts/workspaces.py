@@ -6,10 +6,18 @@ import socket
 import subprocess
 import sys
 from i3ipc import Connection, Event
+import getopt
 
 i3 = None
 
+orientation = "v"
+monitor_name = "none"
+monitor = 0
+
 def update_hypr_workspace(active_workspace):
+    global orientation
+    global monitor_name
+
     output = subprocess.run(f"hyprctl -j workspaces", 
                     shell=True,
                     capture_output=True)
@@ -19,13 +27,13 @@ def update_hypr_workspace(active_workspace):
             key=lambda d: d['id']
             )
 
-    prompt  = f"(box :spacing 5 :orientation \"v\" "
+    prompt  = f"(box :spacing 5 :orientation \"{orientation}\" "
 
     for ws in workspaces:
         id = ws["id"]
         count = ws["windows"]
 
-        if id > 0:
+        if ws["monitor"] == monitor_name and id > 0:
             if id == active_workspace:
                 prompt += f"(circle-indicator :value 100 :class \"workspace\" :cmd \"hyprctl dispatch workspace {id}\" :text \"{id}\")"
             elif count > 0:
@@ -37,11 +45,25 @@ def update_hypr_workspace(active_workspace):
 
 
 def start_hypr():
+    global monitor
+    global monitor_name
+
     sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
 
     server_address = f'/tmp/hypr/{os.environ["HYPRLAND_INSTANCE_SIGNATURE"]}/.socket2.sock'
 
     sock.connect(server_address)
+
+    output = subprocess.run(f"hyprctl -j monitors", 
+                    shell=True,
+                    capture_output=True)
+
+    monitors = json.loads(output.stdout.decode("utf-8"))
+
+    for m in monitors:
+        if m["id"] == monitor:
+            monitor_name = m["name"]
+            break
 
     while True:
         new_event = sock.recv(4096).decode("utf-8")
@@ -105,9 +127,23 @@ def init_sway():
 ######################
 CURRENT_DESKTOP = USER = os.getenv('XDG_CURRENT_DESKTOP')
 
-if CURRENT_DESKTOP == 'sway':
-    init_sway()
-elif CURRENT_DESKTOP == 'Hyprland':
-    init_hypr()
-else:
-    print(f"Incompatable window manager: {CURRENT_DESKTOP}")
+def main(argv):
+    opts, args = getopt.getopt(argv,"hvm:")
+
+    for opt, arg in opts:
+        if opt == "h":
+            orientation = "h"
+        elif opt == "v":
+            orientation = "v"
+        elif opt == "m":
+            monitor = arg
+
+    if CURRENT_DESKTOP == 'sway':
+        init_sway()
+    elif CURRENT_DESKTOP == 'Hyprland':
+        init_hypr()
+    else:
+        print(f"Incompatable window manager: {CURRENT_DESKTOP}")
+
+if __name__ == "__main__":
+   main(sys.argv[1:])

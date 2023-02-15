@@ -96,11 +96,11 @@
   )
 )
 
-(defwidget side-workspaces []
+(defwidget side-workspaces [orientation]
   (box
     :class "workspaces"
     :space-evenly "false"
-    :orientation "v"
+    :orientation "${orientation}"
     :spacing 5
     :valign "center"
     (literal :content "${works}")))
@@ -203,19 +203,19 @@
   )
 )
 
-(defwidget sidebar-top []
+(defwidget sidebar-top [orientation]
 (box
   :class "top"
-  :orientation "v"
+  :orientation "${orientation}"
   :space-evenly "false" 
   :valign "start"
   :halign "fill"
-(side-workspaces)))
+(side-workspaces :orientation "${orientation}")))
 
 ;; CENTER WIDGETS
-(defwidget sidebar-center []
+(defwidget sidebar-center [orientation]
 (box
-  :orientation "v"
+  :orientation "${orientation}"
   :space-evenly "false"
   :valign "center"
   :halign "fill"
@@ -224,9 +224,9 @@
 ))
 
 ;; BOTTOM WIDGETS
-(defwidget sidebar-bottom []
+(defwidget sidebar-bottom [orientation]
 (box 
-  :orientation "v" 
+  :orientation "${orientation}" 
   :space-evenly "false"
   :class "bottom"
   :valign "end"
@@ -243,15 +243,16 @@
 (clock)
 ))
 
-(defwidget sidebar []
+(defwidget sidebar [orientation ?monitor]
 (box
   :class "sidebar"
-  :orientation "v"
+  :orientation "${orientation}"
   :halign "fill"
-(sidebar-top)
-(sidebar-center)
-(sidebar-bottom)))
+(sidebar-top :orientation "${orientation}" :monitor "${monitor}")
+(sidebar-center :orientation "${orientation}")
+(sidebar-bottom :orientation "${orientation}")))
 
+;; WINDOWS
 (defwindow sidebar
 :geometry (geometry
             :x "10px"
@@ -264,4 +265,18 @@
 :wmignore "true"
 :windowtype "dock"
 :exclusive true
-(sidebar))
+(sidebar :orientation "v"))
+
+(defwindow topbar
+:geometry (geometry
+            :y "10px"
+            :x "0.5%" 
+            :width "98%" 
+            :height "60px"
+            :anchor "top center"
+            )
+:monitor 1
+:wmignore "true"
+:windowtype "dock"
+:exclusive true
+(sidebar :orientation "h" :monitor 1))

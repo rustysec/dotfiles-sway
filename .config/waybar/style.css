@@ -1,0 +1,134 @@
+* {
+    font-family: "Hack", "Font Awesome 6 Free";
+    font-size: 13px
+}
+
+window#waybar {
+    background-color: rgba(23, 52, 79, 0.85);
+    color: #ffffff;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+button {
+    border-radius: 10px;
+    margin-right: 5px;
+}
+
+#workspaces button {
+    background-color: transparent;
+    color: #ffffff;
+    border: 2px solid #1abc9c;
+}
+
+#workspaces button:hover {
+    background: rgba(0, 0, 0, 0.2);
+    border: 2px solid #1abc9c;
+}
+
+#workspaces button.visible {
+    background: rgba(0, 0, 0, 0.2);
+    border: 2px solid #ff0000;
+}
+
+#workspaces button.focused {
+    border: 2px solid #9b59b6;
+    background-color: rgba(155, 89, 182, 0.3);
+}
+
+#workspaces button.active {
+    border: 2px solid #9b59b6;
+    background-color: rgba(155, 89, 182, 0.3);
+}
+
+#workspaces button.urgent {
+    background-color: #ed1515;
+    border: 2px solid #ed1515;
+}
+
+#mode {
+    background-color: #64727D;
+}
+
+#clock,
+#battery,
+#bluetooth,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#wireplumber,
+#custom-media,
+#tray,
+#mode,
+#idle_inhibitor,
+#scratchpad,
+#mpd,
+#window {
+    color: #ffffff;
+    border-radius: 10px;
+    border: 2px solid #9b59b6;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+/*
+#clock {
+    margin-right: 10px;
+}
+
+#workspaces {
+    margin-left: 10px;
+}
+*/
+
+.modules-left {
+    margin-left: 10px;
+    background-color: rgba(23, 52, 79, 0.85);
+}
+
+.modules-right {
+    margin-right: 10px;
+    background-color: rgba(23, 52, 79, 0.85);
+}
+
+/*
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
+*/
+
+#clock {
+}
+
+#battery {
+}
+
+#battery.charging, #battery.plugged {
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
+
+#battery.critical:not(.charging) {
+    color: #ffffff;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+label:focus {
+}
