@@ -1,7 +1,7 @@
 {
     "clock": {
         // "timezone": "America/Los_Angeles",
-        "format": "{:%a | %b %d | %H:%M}",
+        "format": "{:%a | %b %d | %H:%M}"
     },
 
     "cpu": {
@@ -63,8 +63,8 @@
 
     "pulseaudio": {
         "format": "{volume}% {icon} {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-bluetooth": "{volume}% {icon}  {format_source}",
+        "format-bluetooth-muted": " {icon}  {format_source}",
         "format-muted": " {format_source}",
         "format-source": "{volume}% ",
         "format-source-muted": "",
@@ -81,10 +81,12 @@
     },
     
     "mpris": {
-        "format": "{status_icon} {artist} - {title}",
+        "format": "{status_icon} {player_icon} {artist} - {title}",
         "player-icons": {
-            "default": "▶",
-            "mpv": "🎵"
+            "default": "🎵",
+            "chrome": "",
+            "chromium": "",
+            "firefox": ""
         },
         "status-icons": {
             "paused": "",
@@ -97,6 +99,12 @@
         "format-connected": " {device_alias}",
         "format-connected-battery": " {device_alias} {device_battery_percentage}%",
         // "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
+    },
+
+    "custom/updates": {
+        "format": "{} ",
+        "interval": "600",
+        "exec": "~/.config/sway/helpers/updates.sh"
     }
 }
 
