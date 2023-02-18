@@ -27,6 +27,7 @@ PACKAGE_MANAGERS=(
     "zypper"
     "pacman"
     "apt"
+    "xbps-install"
 )
 for manager in ${PACKAGE_MANAGERS[@]};
 do

@@ -1,2 +1,3 @@
 .config/sway/config.d/200-background.conf
 .config/hypr/monitor.conf
+.config/waybar/config
