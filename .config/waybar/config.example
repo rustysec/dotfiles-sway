@@ -2,8 +2,8 @@
     "output": [ "MAIN_DISPLAY" ],
     "layer": "top", // Waybar at top layer
     "spacing": 4, // Gaps between modules (4px)
-    "modules-left": ["wlr/workspaces"],
-    "modules-center": ["mpris"],
+    "modules-left": ["wlr/workspaces","mpris"],
+    "modules-center": [],
     "modules-right": ["custom/updates", "bluetooth", "pulseaudio", "network#vpn", "network", "cpu", "memory", "backlight", "battery", "battery#trackpad", "clock"],
     "include": [
 		"~/.config/waybar/modules.json",
