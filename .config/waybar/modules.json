@@ -105,6 +105,10 @@
         "format": "{} ",
         "interval": "600",
         "exec": "~/.config/sway/helpers/updates.sh"
+    },
+
+    "wlr/workspaces": {
+        "sort-by-number": true
     }
 }
 
