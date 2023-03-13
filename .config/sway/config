@@ -27,7 +27,7 @@ set $menu wofi
 # Basics:
 #
     # Start a terminal
-    bindsym $mod+Return exec $term tmux new
+    bindsym $mod+Return exec $term tmux -u new
 
     # Kill focused window
     bindsym $mod+Shift+q kill
@@ -170,7 +170,7 @@ exec swayidle -w \
          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
          before-sleep 'bash ~/.config/sway/locker/locker.sh'
 
-#bindgesture swipe:3:right workspace prev
-#bindgesture swipe:3:left workspace next
+bindgesture swipe:3:right workspace prev
+bindgesture swipe:3:left workspace next
 
 include ~/.config/sway/config.d/*

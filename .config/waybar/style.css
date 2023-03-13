@@ -17,29 +17,29 @@ button {
 }
 
 #workspaces button {
-    background-color: rgba(23, 52, 79, 0.85);
+    background-color: rgba(23, 52, 79, 0.2);
     color: #ffffff;
     border: 2px solid #1abc9c;
 }
 
 #workspaces button:hover {
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.5);
     border: 2px solid #1abc9c;
 }
 
 #workspaces button.visible {
-    background: rgba(0, 0, 0, 0.2);
-    border: 2px solid #ff0000;
+    background-color: rgba(23, 52, 79, 0.85);
+    border: 2px solid #9b59b6;
 }
 
 #workspaces button.focused {
     border: 2px solid #9b59b6;
-    background-color: rgba(155, 89, 182, 0.3);
+    background-color: rgba(23, 52, 79, 0.85);
 }
 
 #workspaces button.active {
     border: 2px solid #9b59b6;
-    background-color: rgba(155, 89, 182, 0.3);
+    background-color: rgba(23, 52, 79, 0.85);
 }
 
 #workspaces button.urgent {
@@ -80,15 +80,11 @@ button {
 }
 
 .modules-left {
-    margin-left: 10px;
-    /*
-    margin-right: 0px;
-    padding-right: 0px;
-    */
+    margin-left: 5px;
 }
 
 .modules-right {
-    margin-right: 10px;
+    margin-right: 5px;
 }
 
 .modules-left > widget:first-child > #workspaces {
