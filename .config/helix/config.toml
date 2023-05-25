@@ -1,0 +1,29 @@
+theme = "tokyonight"
+
+[editor]
+line-number = "relative"
+mouse = false
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.file-picker]
+hidden = false
+
+[keys.normal]
+C-h = "jump_view_left"
+C-j = "jump_view_down"
+C-k = "jump_view_up"
+C-l = "jump_view_right"
+H = ":buffer-previous"
+L = ":buffer-next"
+
+[keys.normal.space]
+i = ":toggle lsp.display-inlay-hints"
+space = ":w"
+c = ":buffer-close"
+
+[keys.normal.space.v]
+r = ":reset-diff-change"

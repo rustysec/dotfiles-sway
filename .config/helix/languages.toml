@@ -1,0 +1,12 @@
+[[language]]
+name = "rust"
+auto-format = true
+[language-server.rust-analyzer]
+# config.cargo.target = "aarch64-apple-darwin"
+config.cargo.target = "x86_64-pc-windows-gnu"
+config.diagnostics.disabled = [
+  "inactive-code",
+  "unresolved-proc-macro",
+  "unlinked-file",
+  "macro-error"
+]

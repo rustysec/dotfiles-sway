@@ -1,4 +1,8 @@
 {
+    "tray": {
+        "spacing": 10
+    },
+
     "clock": {
         // "timezone": "America/Los_Angeles",
         "format": "{:%a | %b %d | %H:%M}"
