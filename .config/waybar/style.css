@@ -4,7 +4,7 @@
 }
 
 window#waybar {
-    background-color: rgba(23, 52, 79, 0);
+    background-color: rgba(23, 52, 79, 0.85);
     color: #ffffff;
     transition-property: background-color;
     transition-duration: .5s;
@@ -13,40 +13,43 @@ window#waybar {
 button { }
 
 #workspaces button {
-    background-color: rgba(23, 52, 79, 0.2);
     color: #ffffff;
-    border: 2px solid #1abc9c;
+    border: 2px solid rgba(23, 52, 79, 0);
+    border-bottom: 2px solid #1abc9c;
     margin-right: 5px;
     border-radius: 0px;
 }
 
 #workspaces button:hover {
-    background: rgba(0, 0, 0, 0.5);
-    border: 2px solid #1abc9c;
+    background: rgba(23, 52, 79, 0.0);
+    background-color: rgba(23, 52, 79, 0.0);
+    border-bottom: 2px solid #1abc9c;
+    border-top: 2px solid #1abc9c;
     margin-right: 5px;
 }
 
 #workspaces button.visible {
-    background-color: rgba(23, 52, 79, 0.85);
-    border: 2px solid #9b59b6;
+    border-bottom: 2px solid #9b59b6;
     margin-right: 5px;
 }
 
 #workspaces button.focused {
-    border: 2px solid #9b59b6;
-    background-color: rgba(23, 52, 79, 0.85);
+    border-bottom: 2px solid #9b59b6;
+    margin-right: 5px;
+}
+
+#workspaces button.focused:hover {
+    border-top: 2px solid #9b59b6;
     margin-right: 5px;
 }
 
 #workspaces button.active {
-    border: 2px solid #9b59b6;
-    background-color: rgba(23, 52, 79, 0.85);
+    border-bottom: 2px solid #9b59b6;
     margin-right: 5px;
 }
 
 #workspaces button.urgent {
-    background-color: #ed1515;
-    border: 2px solid #ed1515;
+    border-bottom: 2px solid #ed1515;
     margin-right: 5px;
 }
 
@@ -75,10 +78,9 @@ button { }
 #custom-updates,
 #window {
     color: #ffffff;
-    border: 2px solid #9b59b6;
+    border-bottom: 2px solid #9b59b6;
     padding-right: 10px;
     padding-left: 10px;
-    background-color: rgba(23, 52, 79, 0.85);
     margin-left: 5px;
 }
 
