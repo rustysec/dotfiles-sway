@@ -1,0 +1,14 @@
+{ config, pkgs, ... }:
+
+{
+  networking = {
+    hostName = "nixos";
+  };
+
+  boot = {
+    initrd = {
+    luks.devices."".device = "";
+    luks.devices."".keyFile = "/crypto_keyfile.bin";
+    };
+  };
+}
