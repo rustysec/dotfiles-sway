@@ -109,12 +109,25 @@ in {
 
     programs.home-manager.enable = true;
 
-    programs.zsh = {
-      enable = true;
-      oh-my-zsh = {
+    programs = {
+      zsh = {
         enable = true;
-        plugins = [ "git" ];
-        theme = "flazz";
+        oh-my-zsh = {
+          enable = true;
+          plugins = [ "git" ];
+          theme = "flazz";
+        };
+      };
+
+      git = {
+        enable = true;
+        userName = "rustysec";
+        userEmail = "russ@infocyte.com";
+        extraConfig = {
+          credential.helper = "${
+            pkgs.git.override { withLibsecret = true; }
+          }/bin/git-credential-libsecret";
+        };
       };
     };
 
