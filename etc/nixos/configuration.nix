@@ -249,9 +249,6 @@ in {
       pulse.enable = true;
     };
 
-		# Enable automatic login for the user.
-		getty.autologinUser = "russ";
-
     greetd = {
       enable = true;
       settings = {
