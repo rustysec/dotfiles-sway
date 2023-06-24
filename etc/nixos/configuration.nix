@@ -108,9 +108,9 @@ in {
       ];
     };
 
-    programs.home-manager.enable = true;
-
     programs = {
+      home-manager.enable = true;
+
       zsh = {
         enable = true;
         oh-my-zsh = {
@@ -141,6 +141,10 @@ in {
         defaultCursor = "Adwaita";
       };
     };
+
+    home.file.".ssh/config".text = ''
+      AddKeysToAgent = "yes"
+    '';
   };
 
 
@@ -165,6 +169,7 @@ in {
 
   environment = {
     systemPackages = with pkgs; [
+      bottom
       brightnessctl
       clang_16
       clang-tools_16
@@ -223,6 +228,8 @@ in {
 
   programs = {
     dconf.enable = true;
+
+    ssh.startAgent = true;
 
     sway = {
       enable = true;
