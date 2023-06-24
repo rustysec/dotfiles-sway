@@ -41,10 +41,11 @@ in {
 
   # Bootloader.
   boot = {
-		loader = {
-		  systemd-boot.enable = true;
-          efi.canTouchEfiVariables = true;
-		};
+    loader = {
+      systemd-boot.enable = true;
+      systemd-boot.consoleMode = "auto";
+      efi.canTouchEfiVariables = true;
+    };
 
 		plymouth.enable = true;
 
@@ -165,6 +166,7 @@ in {
   environment = {
     systemPackages = with pkgs; [
       brightnessctl
+      clang_16
       configure-gtk
       dbus-sway-environment
       dotnet-sdk_8
@@ -174,12 +176,15 @@ in {
       fwupd
       gcc
       glib
+      glibc.dev
       gnome3.adwaita-icon-theme
       go
       google-chrome
       greetd.greetd
       greetd.wlgreet
       grim
+      llvmPackages_16.bintools
+      lua-language-server
       mako
       networkmanagerapplet
       nodejs_20
@@ -188,12 +193,15 @@ in {
       polkit_gnome
       python3
       ripgrep 
+      rust-analyzer
       rustup
+      stylua
       slurp
       swaybg
       swayidle
       swaylock
       tmux
+      typescript
       virt-manager
       waybar
       wayland
