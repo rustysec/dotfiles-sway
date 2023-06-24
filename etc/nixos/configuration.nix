@@ -167,6 +167,8 @@ in {
     systemPackages = with pkgs; [
       brightnessctl
       clang_16
+      clang-tools_16
+      cmake
       configure-gtk
       dbus-sway-environment
       dotnet-sdk_8
@@ -178,12 +180,15 @@ in {
       glib
       glibc.dev
       gnome3.adwaita-icon-theme
+      gnumake
       go
       google-chrome
       greetd.greetd
-      greetd.wlgreet
       grim
       llvmPackages_16.bintools
+      llvmPackages_16.libcxxStdenv
+      llvmPackages_16.stdenv
+      llvmPackages_16.libclang.lib
       lua-language-server
       mako
       networkmanagerapplet
@@ -202,6 +207,7 @@ in {
       swaylock
       tmux
       typescript
+      unzip
       virt-manager
       waybar
       wayland
@@ -209,6 +215,7 @@ in {
       wdisplays
       wl-clipboard
       wofi
+      zip
     ];
 
     shells = [ pkgs.zsh ];
