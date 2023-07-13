@@ -174,3 +174,4 @@ bindgesture swipe:3:right workspace prev
 bindgesture swipe:3:left workspace next
 
 include ~/.config/sway/config.d/*
+include /etc/sway/config.d/*

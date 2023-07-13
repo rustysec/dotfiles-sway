@@ -1,4 +1,4 @@
-.config/sway/config.d/200-background.conf
+.config/sway/config.d/200-*.conf
 .config/hypr/monitor.conf
 .config/waybar/config
 .config/waybar/config.sway
