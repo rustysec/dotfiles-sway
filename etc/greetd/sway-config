@@ -36,7 +36,7 @@ input "1452:834:Apple_Internal_Keyboard_/_Trackpad" {
     xkb_options caps:swapescape
 }
 
-exec "wlgreet --command sway; swaymsg exit"
+exec "wlgreet --command /etc/greetd/launch-sway.sh; swaymsg exit"
 
 bindsym Mod4+shift+e exec swaynag \
 -t warning \
