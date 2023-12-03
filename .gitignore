@@ -2,3 +2,4 @@
 .config/hypr/monitor.conf
 .config/waybar/config
 .config/waybar/config.sway
+.config/sway/locker/extra

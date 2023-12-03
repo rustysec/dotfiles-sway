@@ -2,26 +2,31 @@
     "tray": {
         "spacing": 10
     },
-
     "clock": {
         // "timezone": "America/Los_Angeles",
         "format": "{:%a | %b %d | %H:%M}"
     },
-
     "cpu": {
         "format": "{usage}% ",
         "tooltip": false
     },
-
     "memory": {
         "format": "{}% "
     },
-
     "backlight": {
         "format": "{percent}% {icon}",
-        "format-icons": ["", "", "", "", "", "", "", "", ""]
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
     },
-
     "battery": {
         "states": {
             "warning": 30,
@@ -31,9 +36,14 @@
         "format-charging": "{capacity}% ",
         "format-plugged": "{capacity}% ",
         "format-alt": "{time} {icon}",
-        "format-icons": ["", "", "", "", ""]
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
     },
-
     "battery#trackpad": {
         "bat": "hid-3c:a6:f6:b8:d4:28-battery",
         "adaptor": "hid-3c:a6:f6:b8:d4:28-battery",
@@ -45,9 +55,14 @@
         "format-charging": "{capacity}% ",
         "format-plugged": "{capacity}% ",
         "format-alt": "{time} {icon}",
-        "format-icons": ["", "", "", "", ""]
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
     },
-
     "network": {
         "interface": "wlp*",
         "format-wifi": "{essid} ({signalStrength}%) ",
@@ -56,7 +71,6 @@
         "format-disconnected": "Disconnected ⚠",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
-
     "network#vpn": {
         "interface": "tun0",
         "format-ethernet": "",
@@ -64,7 +78,6 @@
         "format-disconnected": "",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
-
     "pulseaudio": {
         "format": "{volume}% {icon} {format_source}",
         "format-bluetooth": "{volume}% {icon}  {format_source}",
@@ -79,11 +92,14 @@
             "phone": "",
             "portable": "",
             "car": "",
-            "default": ["", "", ""]
+            "default": [
+                "",
+                "",
+                ""
+            ]
         },
         "on-click": "pavucontrol"
     },
-    
     "mpris": {
         "format": "{status_icon} {player_icon} {artist} - {title}",
         "player-icons": {
@@ -97,22 +113,18 @@
             "playing": ""
         }
     },
-
     "bluetooth": {
         "format": " {status}",
         "format-connected": " {device_alias}",
         "format-connected-battery": " {device_alias} {device_battery_percentage}%",
         // "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
     },
-
     "custom/updates": {
         "format": "{} ",
         "interval": "600",
         "exec": "~/.config/sway/helpers/updates.sh"
     },
-
     "wlr/workspaces": {
         "sort-by-number": true
     }
 }
-
